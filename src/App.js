@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [text, setText] = useState('')
+
+  function onChange(event) {
+    setText(event.target.value)
+  }
+
+  function asd() {
+    console.log(text)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>
+        Todo list
+      </h1>
+      <input
+        value={text}
+        placeholder='Введите текст'
+        onChange={onChange}
+      ></input>
+      <button onClick={asd}>
+        Добавить
+      </button>
     </div>
   );
 }
