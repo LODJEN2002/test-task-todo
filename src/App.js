@@ -1,19 +1,24 @@
 import { useState } from 'react';
 import './App.css';
+import BusinessList from './components/BusinessList/BusinessList';
 
 function App() {
-  const [text, setText] = useState('')
+  const [text, setText] = useState('');
+  const todoArr = ['Покушать', 'покакать', 'покурить'];
+  console.log(todoArr.length)
+  console.log(todoArr.map(el => console.log(el)))
 
   function onChange(event) {
     setText(event.target.value)
   }
 
   function asd() {
-    console.log(text)
+    todoArr.push(text)
+    console.log(todoArr)
   }
 
   return (
-    <div className="App">
+    <main className="App">
       <h1>
         Todo list
       </h1>
@@ -25,7 +30,9 @@ function App() {
       <button onClick={asd}>
         Добавить
       </button>
-    </div>
+      <BusinessList
+        arr={todoArr} />
+    </main>
   );
 }
 
