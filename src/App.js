@@ -5,8 +5,10 @@ import BusinessList from './components/BusinessList/BusinessList';
 function App() {
   const [text, setText] = useState('');
   const todoArr = ['Покушать', 'покакать', 'покурить'];
-  console.log(todoArr.length)
-  console.log(todoArr.map(el => console.log(el)))
+  const arrObj = [{name: 'asd', age: 14}, {name: 'ivan', age: 22}]
+  console.log(arrObj)
+  // console.log(todoArr.length)
+  // console.log(todoArr.map(el => console.log(el)))
 
   function onChange(event) {
     setText(event.target.value)
