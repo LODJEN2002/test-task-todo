@@ -4,36 +4,35 @@ import BusinessList from './components/BusinessList/BusinessList';
 
 function App() {
   const [text, setText] = useState('');
-  const todoArr = ['Покушать', 'покакать', 'покурить'];
-  const arrObj = [{name: 'asd', age: 14}, {name: 'ivan', age: 22}]
-  console.log(arrObj)
-  // console.log(todoArr.length)
-  // console.log(todoArr.map(el => console.log(el)))
+  const [todoArr, setTodoArr] = useState([]);
 
   function onChange(event) {
     setText(event.target.value)
   }
 
-  function asd() {
-    todoArr.push(text)
-    console.log(todoArr)
+  function handleSubmit(e) {
+    e.preventDefault()
+    setTodoArr([text, ...todoArr])
+    setText('')
   }
 
   return (
     <main className="App">
-      <h1>
-        Todo list
-      </h1>
-      <input
-        value={text}
-        placeholder='Введите текст'
-        onChange={onChange}
-      ></input>
-      <button onClick={asd}>
-        Добавить
-      </button>
-      <BusinessList
-        arr={todoArr} />
+      <form onSubmit={handleSubmit}>
+        <h1>
+          Todo list
+        </h1>
+        <input
+          value={text}
+          placeholder='Введите текст'
+          onChange={onChange}
+        ></input>
+        <button  type='Submit'>
+          Добавить
+        </button>
+        <BusinessList
+          arr={todoArr} />
+      </  form>
     </main>
   );
 }

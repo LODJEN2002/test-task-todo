@@ -9,7 +9,7 @@ const BusinessList = (props) => {
     // }asd
     // console.log(keyArr)
     
-    arr.map((el, i) => console.log(i))
+    // arr.map((el, i) => console.log(i))
 
     // console.log(arr.map(el => console.log(el)))
     // console.log(arr)
