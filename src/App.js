@@ -27,7 +27,7 @@ function App() {
           placeholder='Введите текст'
           onChange={onChange}
         ></input>
-        <button  type='Submit'>
+        <button type='Submit'>
           Добавить
         </button>
         <BusinessList

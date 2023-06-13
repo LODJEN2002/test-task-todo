@@ -1,20 +1,12 @@
 import React from 'react';
 import Business from './Business/Business';
+import './BusinessList.css'
 
 const BusinessList = (props) => {
     const {arr} = props
-    // const keyArr = []
-    // for (let i = 0; i < arr.length; i++) {
-    //     keyArr.push(i);   
-    // }asd
-    // console.log(keyArr)
-    
-    // arr.map((el, i) => console.log(i))
 
-    // console.log(arr.map(el => console.log(el)))
-    // console.log(arr)
     return (
-        <div>
+        <div className='businessList'>
             {arr.map((el, i) => (
                 <Business
                 key={i}

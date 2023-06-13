@@ -1,9 +1,10 @@
 import React from 'react';
+import './Business.css'
 
 const Business = (props) => {
     const { text } = props
     return (
-        <div onClick={(e) => console.log(e)}>
+        <div className='business' onClick={(e) => console.log(e)}>
             {text}
         </div>
     );
