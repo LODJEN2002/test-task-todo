@@ -11,14 +11,20 @@ function App() {
   }
 
   function handleSubmit(e) {
-    e.preventDefault()
-    setTodoArr([text, ...todoArr])
-    setText('')
+    if (text !== '') {
+      e.preventDefault()
+      setTodoArr([text, ...todoArr])
+      setText('')
+    }
+  }
+
+  function handleDeliteBusiness(text) {
+    setTodoArr(todoArr.filter(el => el !== text))
   }
 
   return (
     <main className="App">
-      <form onSubmit={handleSubmit}>
+      <div>
         <h1>
           Todo list
         </h1>
@@ -27,12 +33,13 @@ function App() {
           placeholder='Введите текст'
           onChange={onChange}
         ></input>
-        <button type='Submit'>
+        <button onClick={handleSubmit}>
           Добавить
         </button>
         <BusinessList
-          arr={todoArr} />
-      </  form>
+          arr={todoArr}
+          onDelite={handleDeliteBusiness} />
+      </div>
     </main>
   );
 }
