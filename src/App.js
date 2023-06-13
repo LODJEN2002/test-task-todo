@@ -10,6 +10,8 @@ function App() {
     setText(event.target.value)
   }
 
+  // addEventListener
+
   function handleSubmit(e) {
     if (text !== '') {
       e.preventDefault()
@@ -32,6 +34,11 @@ function App() {
           value={text}
           placeholder='Введите текст'
           onChange={onChange}
+          onKeyDown={(e) => {
+            if (e.code === 'Enter') {
+              handleSubmit(e)
+            }
+          }}
         ></input>
         <button onClick={handleSubmit}>
           Добавить
