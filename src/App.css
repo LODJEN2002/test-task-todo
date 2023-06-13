@@ -1,5 +1,48 @@
+@import "./fonts/inter.css";
+
+@keyframes zxc {
+  from {
+    /* rotate: -50deg; */
+  }
+
+  to {
+    rotate: 180deg;
+  }
+
+}
+
 .App {
   text-align: center;
   margin-top: 25px;
-  color: blueviolet
+  color: white;
+}
+
+.ToDo__title {
+  display: flex;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 48px;
+  line-height: 36px;
+  font-style: normal;
+  font-weight: 400;
+  color: #C5BE19;
+  margin-bottom: 25px;
+  margin-top: 200px;
+}
+
+.Todo__totle_o {
+  width: 15px;
+  color: #19C572;
+}
+
+.Todo__totle_list {
+  margin-top: 24px;
+  margin-left: 15px;
+}
+
+.asd {
+  display: flex;
+  rotate: -100deg;
+  animation: zxc 2s infinite linear 5s; 
+
 }
