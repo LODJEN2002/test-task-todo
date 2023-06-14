@@ -1,5 +1,6 @@
 import React from 'react';
-import './Business.css'
+import './Business.css';
+import closeIcone from '../../../images/close_cross_icon_128690.svg'
 
 const Business = (props) => {
     const { text, onDelite } = props
@@ -10,10 +11,11 @@ const Business = (props) => {
 
     return (
         <div className='business'>{text}
-            <button
+            <img
+                src={closeIcone}
+                alt='closeIcone'
                 className='business__delite'
-                onClick={handleDeliteBusiness}>Крестик
-            </button>
+                onClick={handleDeliteBusiness}/>
         </div>
 
     )

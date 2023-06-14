@@ -27,7 +27,7 @@
   font-weight: 400;
   color: #C5BE19;
   margin-bottom: 25px;
-  margin-top: 200px;
+  margin-top: 50px;
 }
 
 .Todo__totle_o {
@@ -42,7 +42,49 @@
 
 .asd {
   display: flex;
-  rotate: -100deg;
-  animation: zxc 2s infinite linear 5s; 
+  rotate: -180deg;
+  animation: zxc 19s infinite linear 4s;
 
+}
+
+.Todo__container {
+  background-color: #EEF099;
+  width: 688px;
+  height: 48px;
+  margin: 0 auto 0 auto;
+  border-radius: 15px;
+  margin-top: 45px;
+}
+
+.ToDo__container-input {
+  background-color: #EEF099;
+  margin: 6px 0 6px 15px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 36px;
+  padding: 0;
+  height: 36px;
+  width: 501px;
+  border: none;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+}
+
+.ToDo__container-button {
+  background-color: #19C572;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 36px;
+  border: none;
+  height: 48px;
+  padding: 6px 0 6px 0;
+  width: 162px;
+  margin-left: 9px;
+  border-radius: 0 15px 15px 0;
+  color: #110726;
+}
+
+.ToDo__container-button:hover {
+  cursor: pointer;
 }

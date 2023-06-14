@@ -1,19 +1,31 @@
+@import '../../../fonts/inter.css';
+
 .business {
     display: flex;
     justify-content: space-between;
     margin-left: auto;
     margin-right: auto;
-    width: 350px;
+    width: 1116px;
     margin-top: 10px;
-    padding-left: 10px;
+    padding-left: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: yellow;
-    border: 1px solid orangered;
-    border-radius: 5px;
-    text-align: left;
+    background-color: #CECE1B;
+    border: 3px solid #030518;
+    border-radius: 15px;
+    color: #110726;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 36px;
 }
 
 .business__delite {
-    margin-right: 10px;
+    margin-right: 20px;
+    width: 32px;
+}
+
+.business__delite:hover {
+    cursor: pointer;
 }

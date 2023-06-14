@@ -4,13 +4,11 @@ import BusinessList from './components/BusinessList/BusinessList';
 
 function App() {
   const [text, setText] = useState('');
-  const [todoArr, setTodoArr] = useState([]);
+  const [todoArr, setTodoArr] = useState(['Составить список дел']);
 
   function onChange(event) {
     setText(event.target.value)
   }
-
-  // addEventListener
 
   function handleSubmit(e) {
     if (text !== '') {
@@ -62,19 +60,24 @@ function App() {
             </div>
           </div> */}
         </div>
-        <input
-          value={text}
-          placeholder='Введите текст'
-          onChange={onChange}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              handleSubmit(e)
-            }
-          }}
-        ></input>
-        <button onClick={handleSubmit}>
-          Добавить
-        </button>
+        <div className='Todo__container'>
+          <input
+            className='ToDo__container-input'
+            value={text}
+            placeholder='Введите текст'
+            onChange={onChange}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                handleSubmit(e)
+              }
+            }}
+          ></input>
+          <button
+            className='ToDo__container-button'
+            onClick={handleSubmit}>
+            Just Do IT
+          </button>
+        </div>
         <BusinessList
           arr={todoArr}
           onDelite={handleDeliteBusiness} />
