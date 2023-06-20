@@ -4,7 +4,12 @@ import BusinessList from './components/BusinessList/BusinessList';
 
 function App() {
   const [text, setText] = useState('');
-  const [todoArr, setTodoArr] = useState(['Составить список дел']);
+  // const [idText, setIdText] = useState(null);
+  // const [orderText, setOrderText] = useState(null);
+  const [todoObj, setTodoObj] = useState([
+    { id: 1, order: 1, text: 'hellp world' },
+    { id: 2, order: 2, text: 'qq qwe' }
+  ]);
 
   function onChange(event) {
     setText(event.target.value)
@@ -12,14 +17,17 @@ function App() {
 
   function handleSubmit(e) {
     if (text !== '') {
+      console.log(todoObj)
       e.preventDefault()
-      setTodoArr([text, ...todoArr])
+      setTodoObj([{ id: todoObj.length + 1, order: todoObj.length + 1, text: text }, ...todoObj]) // Есть бак с id and order.
       setText('')
     }
   }
 
-  function handleDeliteBusiness(text) {
-    setTodoArr(todoArr.filter(el => el !== text))
+  function handleDeliteBusiness(id, order, text) {
+    setTodoObj(todoObj.filter(el => el.text !== text || el.id !== id || el.order !== order))
+    console.log(id)
+    console.log(order)
   }
 
   return (
@@ -47,18 +55,6 @@ function App() {
           <div className='Todo__totle_list'>
             List
           </div>
-          {/* <div className='ToDo__title-t'>
-            T
-            <div className='ToDo__title-d'>
-              D
-            </div>
-          </div>
-          <div className='ToDo__title-t'>
-            o
-            <div className='ToDo__title-o2'>
-              o
-            </div>
-          </div> */}
         </div>
         <div className='Todo__container'>
           <input
@@ -79,7 +75,7 @@ function App() {
           </button>
         </div>
         <BusinessList
-          arr={todoArr}
+          obj={todoObj}
           onDelite={handleDeliteBusiness} />
       </div>
     </main>

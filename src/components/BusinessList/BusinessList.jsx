@@ -3,15 +3,15 @@ import Business from './Business/Business';
 import './BusinessList.css'
 
 const BusinessList = (props) => {
-    const { arr, onDelite } = props
+    const { obj, onDelite } = props
 
     return (
         <div className='businessList'>
-            {arr.map((el, i) => (
+            {obj.map((el) => (
                 <Business
-                    key={i}
-                    text={el}
-                    arr={arr}
+                    key={el.id}
+                    // text={el}
+                    obj={el}
                     onDelite={onDelite}
                 />
             ))}
