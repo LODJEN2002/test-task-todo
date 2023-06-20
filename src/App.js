@@ -11,6 +11,15 @@ function App() {
     { id: 2, order: 2, text: 'qq qwe' }
   ]);
 
+  function sortTodo(a, b) {
+    if (a.order > b.order) {
+      return -1
+    }
+    if (a.order < b.order) {
+      return 1
+    }
+  }
+
   function onChange(event) {
     setText(event.target.value)
   }
@@ -29,6 +38,21 @@ function App() {
     console.log(id)
     console.log(order)
   }
+
+  function handleSort(card, currentBusiness) {
+    setTodoObj(todoObj.map(c => {
+      if (c.id === card.id) {
+        return { ...c, order: currentBusiness.order }
+      }
+      if (c.id === currentBusiness.id) {
+        // console.log('a')
+        return { ...c, order: card.order }
+      }
+      return c
+    }))
+  }
+
+  // todoObj.map(el => console.log(el))
 
   return (
     <main className="App">
@@ -75,8 +99,11 @@ function App() {
           </button>
         </div>
         <BusinessList
+          sortTodo={sortTodo}
           obj={todoObj}
-          onDelite={handleDeliteBusiness} />
+          onDelite={handleDeliteBusiness}
+          onQwe={handleSort}
+        />
       </div>
     </main>
   );
