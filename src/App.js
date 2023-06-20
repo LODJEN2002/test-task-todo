@@ -7,9 +7,11 @@ function App() {
   // const [idText, setIdText] = useState(null);
   // const [orderText, setOrderText] = useState(null);
   const [todoObj, setTodoObj] = useState([
-    { id: 1, order: 1, text: 'hellp world' },
-    { id: 2, order: 2, text: 'qq qwe' }
+    { id: 1, text: 'hellp world', order: 1 },
+    { id: 2, text: 'qq qwe', order: 2 }
   ]);
+  // const [currentBusiness, setCurrentBusiness] = useState(null)
+
 
   function sortTodo(a, b) {
     if (a.order > b.order) {
@@ -28,7 +30,7 @@ function App() {
     if (text !== '') {
       console.log(todoObj)
       e.preventDefault()
-      setTodoObj([{ id: todoObj.length + 1, order: todoObj.length + 1, text: text }, ...todoObj]) // Есть бак с id and order.
+      setTodoObj([{ id: todoObj.length + 1, text: text, order: todoObj.length + 1 }, ...todoObj]) // Есть бак с id and order.
       setText('')
     }
   }
@@ -40,16 +42,28 @@ function App() {
   }
 
   function handleSort(card, currentBusiness) {
+    console.log(card)
+    console.log(currentBusiness)
     setTodoObj(todoObj.map(c => {
       if (c.id === card.id) {
-        return { ...c, order: currentBusiness.order }
-      }
-      if (c.id === currentBusiness.id) {
-        // console.log('a')
         return { ...c, order: card.order }
       }
-      return c
+      if (c.id === currentBusiness.id) {
+        return { ...c, order: currentBusiness.order }
+      }
+      console.log(c)
+      return { ...c, order: card.order }
     }))
+    // setTodoObj(todoObj.map(c => {
+    //   if (c.id === card.id) {
+    //     return { ...c, order: currentBusiness.order }
+    //   }
+    //   if (c.id === currentBusiness.id) {
+    //     // console.log('a')
+    //     return { ...c, order: card.order }
+    //   }
+    //   return c
+    // }))
   }
 
   // todoObj.map(el => console.log(el))

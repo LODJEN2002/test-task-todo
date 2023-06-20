@@ -4,7 +4,7 @@ import closeIcone from '../../../images/close_cross_icon_128690.svg'
 
 const Business = (props) => {
     const { obj: card, onDelite, onQwe } = props;
-    const { id, order, text } = card;
+    const { id, text, order } = card;
     const [currentBusiness, setCurrentBusiness] = useState(null)
     // console.log(obj)
     // obj.forEach(el => {
@@ -18,6 +18,7 @@ const Business = (props) => {
 
     function dragStratHandler(e, card) {
         setCurrentBusiness(card)
+        console.log(card)
         console.log(currentBusiness)
     }
 
@@ -31,6 +32,7 @@ const Business = (props) => {
     }
 
     function dropHandler(e, card) {
+        console.log(currentBusiness)
         e.preventDefault()
         onQwe(card, currentBusiness)
     }
