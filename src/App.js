@@ -4,14 +4,10 @@ import BusinessList from './components/BusinessList/BusinessList';
 
 function App() {
   const [text, setText] = useState('');
-  // const [idText, setIdText] = useState(null);
-  // const [orderText, setOrderText] = useState(null);
   const [todoObj, setTodoObj] = useState([
     { id: 1, text: 'hellp world', order: 1 },
     { id: 2, text: 'qq qwe', order: 2 }
   ]);
-  // const [currentBusiness, setCurrentBusiness] = useState(null)
-
 
   function sortTodo(a, b) {
     if (a.order > b.order) {
@@ -35,10 +31,8 @@ function App() {
     }
   }
 
-  function handleDeliteBusiness(id, order, text) {
-    setTodoObj(todoObj.filter(el => el.text !== text || el.id !== id || el.order !== order))
-    console.log(id)
-    console.log(order)
+  function handleDeliteBusiness(card) {
+    setTodoObj(todoObj.filter(el => el.text !== card.text || el.id !== card.id || el.order !== card.order))
   }
 
   function handleSort(card, currentBusiness) {
@@ -46,27 +40,15 @@ function App() {
     console.log(currentBusiness)
     setTodoObj(todoObj.map(c => {
       if (c.id === card.id) {
-        return { ...c, order: card.order }
-      }
-      if (c.id === currentBusiness.id) {
         return { ...c, order: currentBusiness.order }
       }
+      if (c.id === currentBusiness.id) {
+        return { ...c, order: card.order }
+      }
       console.log(c)
-      return { ...c, order: card.order }
+      return c
     }))
-    // setTodoObj(todoObj.map(c => {
-    //   if (c.id === card.id) {
-    //     return { ...c, order: currentBusiness.order }
-    //   }
-    //   if (c.id === currentBusiness.id) {
-    //     // console.log('a')
-    //     return { ...c, order: card.order }
-    //   }
-    //   return c
-    // }))
   }
-
-  // todoObj.map(el => console.log(el))
 
   return (
     <main className="App">
