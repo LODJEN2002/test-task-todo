@@ -13,10 +13,7 @@ const Business = (props) => {
 
 
     return (
-        <div
-            className='business'
-           
-        >
+        <div className='business'>
             {text}
             <img
                 src={closeIcone}
