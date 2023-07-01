@@ -15,7 +15,7 @@ const BusinessList = (props) => {
 
     }
 
-    function handleDeliteBusiness(e, card) {
+    function handleDeliteBusiness(card) {
         onDelite(card)
     }
 
@@ -25,27 +25,20 @@ const BusinessList = (props) => {
 
     function dragEndHandler(e) {
         e.target.style.background = '#CECE1B'
-        console.log('Убрал с элемента')
         e.target.style.borderTop = '3px solid #030518';
-        // e.target.style.marginBottom = '0';
-
     }
 
     function dragOverHandler(e) {
         e.preventDefault()
-        console.log('На элемент')
         e.target.style.borderTop = '5px solid red';
-        // e.target.style.marginBottom = '-5px';
         e.target.style.background = 'green'
     }
 
     function dropHandler(e, card) {
         e.preventDefault()
-        console.log('На элемент закинул')
         onQwe(card, currentCard)
         e.target.style.background = '#CECE1B'
         e.target.style.borderTop = '3px solid #030518';
-        // console.log(cards)
     }
 
     return (
@@ -67,7 +60,7 @@ const BusinessList = (props) => {
                         src={closeIcone}
                         alt='closeIcone'
                         className='business__delite'
-                        onClick={(e) => handleDeliteBusiness(e, card)}
+                        onClick={(e) => handleDeliteBusiness(card)}
                     />
                 </div>
 

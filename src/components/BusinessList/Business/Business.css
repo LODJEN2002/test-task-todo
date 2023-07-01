@@ -20,6 +20,7 @@
     font-size: 20px;
     line-height: 36px;
     cursor: grab;
+    transition: all .2s linear;
 }
 
 .business__delite {
@@ -27,6 +28,13 @@
     width: 32px;
 }
 
-.business__delite:hover {
+.business__delite_animation {
+    margin-right: 20px;
+    width: 32px;
+}
+
+
+.business__delite:hover,
+.business__delite_animation:hover {
     cursor: pointer;
 }
