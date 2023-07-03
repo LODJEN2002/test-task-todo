@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import './App.css';
 import BusinessList from './components/BusinessList/BusinessList';
+import { TransitionGroup } from 'react-transition-group';
 
 function App() {
+  const [test, setTest] = useState(true)
   const [text, setText] = useState('');
   const [todoObj, setTodoObj] = useState([
     { id: 1, text: '1', order: 1 },
@@ -37,16 +39,8 @@ function App() {
   }
 
   function handleSort(card, currentBusiness) {
-    // console.log(card, 'card')
-    // console.log(currentBusiness, 'currentBusiness')
-
-
     setTodoObj(todoObj.map(e => {
-      // console.log(e, 'e')
-      // console.log(card, 'card')
-      // console.log(currentBusiness, 'currentBusiness')
       if (e.id === currentBusiness.id) {
-        // console.log('s')
         if (currentBusiness.order < card.order) {
           return { ...e, order: card.order + 1 }
         }
@@ -56,79 +50,87 @@ function App() {
         if (currentBusiness.order === card.order) {
           return { ...e, order: card.order + 1 }
         }
-
       }
-      // if (e.id === currentBusiness.id) {
-      //   console.log('s')
-      //   return { ...e, order: card.id - 1 }
-      // }
-      // console.log(e)
       return e
     }))
-    // setTodoObj(todoObj.map(c => {
-    //   if (c.id === card.id) {
-    //     console.log(c, 'c')
-    //     return { ...c, order: currentBusiness.order }
-    //   }
-    //   if (c.id === currentBusiness.id) {
-    //     console.log(c)
-    //     return { ...c, order: card.order }
-    //   }
-    //   return c
-    // }))
   }
 
   return (
     <main className="App">
-      <div>
-        <div className='ToDo__title'>
-          <div className='asd'>
+      <div className='ToDo__title'>
+        <div className='asd'>
+          <div>
             <div>
-              <div>
-                T
-              </div>
-              <div>
-                D
-              </div>
+              T
             </div>
             <div>
-              <div className='Todo__totle_o'>
-                o
-              </div>
-              <div className='Todo__totle_o'>
-                o
-              </div>
+              D
             </div>
           </div>
-          <div className='Todo__totle_list'>
-            List
+          <div>
+            <div className='Todo__totle_o'>
+              o
+            </div>
+            <div className='Todo__totle_o'>
+              o
+            </div>
           </div>
         </div>
-        <div className='Todo__container'>
-          <input
-            className='ToDo__container-input'
-            value={text}
-            placeholder='Введите текст'
-            onChange={onChange}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                handleSubmit(e)
-              }
-            }}
-          ></input>
-          <button
-            className='ToDo__container-button'
-            onClick={handleSubmit}>
-            Just Do IT
-          </button>
+        <div className='Todo__totle_list'>
+          List
         </div>
-        <BusinessList
-          sortTodo={sortTodo}
-          obj={todoObj}
-          onDelite={handleDeliteBusiness}
-          onQwe={handleSort}
-        />
       </div>
+      <div className='Todo__container'>
+        <input
+          className='ToDo__container-input'
+          value={text}
+          placeholder='Введите текст'
+          onChange={onChange}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              handleSubmit(e)
+            }
+          }}
+        ></input>
+        <button
+          className='ToDo__container-button'
+          onClick={handleSubmit}>
+          Just Do IT
+        </button>
+      </div>
+      <BusinessList
+        sortTodo={sortTodo}
+        obj={todoObj}
+        onDelite={handleDeliteBusiness}
+        onQwe={handleSort}
+      />
+
+      <TransitionGroup>
+
+        <div className={test ? 'test_anima' : 'test_anima_go'}>
+          <div className='test_anima__text'>
+            test_anima
+          </div>
+          <button
+            className='test_anima__button'
+            onClick={() => {
+              setTest(!test)
+            }}>
+            del</button>
+        </div>
+        <div className={test ? 'test_anima' : 'test_anima_go'}>
+          <div className='test_anima__text'>
+            test_anima
+          </div>
+          <button
+            className='test_anima__button'
+            onClick={() => {
+              setTest(!test)
+            }}>
+            del</button>
+        </div>
+      </TransitionGroup>
+
     </main>
   );
 }

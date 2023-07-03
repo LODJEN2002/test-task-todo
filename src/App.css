@@ -88,3 +88,65 @@
 .ToDo__container-button:hover {
   cursor: pointer;
 }
+
+@keyframes testback {
+  0% {
+    height: 0;
+    font-size: 0;
+    border: none;
+  }
+
+  100% {
+    height: 45px;
+    font-size: 44px;
+    /* border: 1px solid yellowgreen; */
+  }
+}
+
+@keyframes test {
+  0% {
+    height: 45px;
+    font-size: 44px;
+    /* border: 1px solid yellowgreen; */
+  }
+
+  100% {
+    height: 0;
+    font-size: 0;
+    border: none;
+  }
+}
+
+.test_anima,
+.test_anima_go {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 25px auto 0 auto;
+  margin-top: 25px;
+  font-size: 45px;
+  border: 1px solid yellowgreen;
+  border-radius: 8px;
+  width: 455px;
+  height: 45px;
+  animation: testback 1s linear;
+
+}
+
+.test_anima_go {
+  animation: test 1s linear;
+  height: 0;
+  font-size: 0; 
+  border: none;
+}
+
+.test_anima__text {
+  margin-left: 15px;
+}
+
+.test_anima__button {
+
+  width: 25px;
+  height: 25px;
+
+}
