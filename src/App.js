@@ -1,15 +1,19 @@
 import { useState } from 'react';
 import './App.css';
 import BusinessList from './components/BusinessList/BusinessList';
-import { TransitionGroup } from 'react-transition-group';
+// import { TransitionGroup } from 'react-transition-group';
+// import Business from './components/BusinessList/Business/Business';
+import { Transition } from 'react-transition-group';
 
 function App() {
+  // const [test, setTest] = useState(true)
   const [test, setTest] = useState(true)
+
   const [text, setText] = useState('');
   const [todoObj, setTodoObj] = useState([
     { id: 1, text: '1', order: 1 },
     { id: 2, text: '2', order: 2 },
-    { id: 3, text: '3', order: 3 }
+    { id: 3, text: 'React Transition Group', order: 3 }
   ]);
 
   function sortTodo(a, b) {
@@ -105,8 +109,51 @@ function App() {
         onQwe={handleSort}
       />
 
-      <TransitionGroup>
+      <Transition
+        in={test}
+        timeout={1200}
+      >
+        {state =>
+          <div className={'test_anima ' + state}>
+            <div className='test_anima__text'>
+              test_animas
+            </div>
+            <button
+              className='test_anima__button'
+              onClick={() => {
+                setTest(!test)
+                // handleDeliteEl()
 
+              }}>
+              del</button>
+          </div>
+        }
+
+      </Transition >
+      <Transition
+        in={test}
+        timeout={1200}
+      >
+        {state =>
+          <div className={'test_anima ' + state}>
+            <div className='test_anima__text'>
+              test_animas
+            </div>
+            <button
+              className='test_anima__button'
+              onClick={() => {
+                setTest(!test)
+                // handleDeliteEl()
+
+              }}>
+              del</button>
+          </div>
+        }
+
+      </Transition >
+
+
+      {/* 
         <div className={test ? 'test_anima' : 'test_anima_go'}>
           <div className='test_anima__text'>
             test_anima
@@ -128,8 +175,7 @@ function App() {
               setTest(!test)
             }}>
             del</button>
-        </div>
-      </TransitionGroup>
+        </div> */}
 
     </main>
   );

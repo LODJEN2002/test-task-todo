@@ -114,11 +114,11 @@
     height: 0;
     font-size: 0;
     border: none;
+    /* margin-top: 15px; */
   }
 }
 
-.test_anima,
-.test_anima_go {
+.test_anima {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -129,14 +129,24 @@
   border-radius: 8px;
   width: 455px;
   height: 45px;
-  animation: testback 1s linear;
+  /* animation: testback 1s linear; */
 
 }
+
+.test_anima.entering {
+  animation: test 1s linear;
+}
+.test_anima.entered {}
+.test_anima.exiting {
+  animation: testback 1s linear;
+  
+}
+.test_anima.exited {}
 
 .test_anima_go {
   animation: test 1s linear;
   height: 0;
-  font-size: 0; 
+  font-size: 0;
   border: none;
 }
 
