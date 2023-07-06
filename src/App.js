@@ -6,9 +6,6 @@ import BusinessList from './components/BusinessList/BusinessList';
 import { Transition } from 'react-transition-group';
 
 function App() {
-  // const [test, setTest] = useState(true)
-  const [test, setTest] = useState(true)
-
   const [text, setText] = useState('');
   const [todoObj, setTodoObj] = useState([
     { id: 1, text: '1', order: 1 },
@@ -109,7 +106,7 @@ function App() {
         onQwe={handleSort}
       />
 
-      <Transition
+      {/* <Transition
         in={test}
         timeout={1200}
       >
@@ -150,7 +147,7 @@ function App() {
           </div>
         }
 
-      </Transition >
+      </Transition > */}
 
 
       {/* 

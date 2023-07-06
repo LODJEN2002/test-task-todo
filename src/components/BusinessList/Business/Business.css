@@ -23,6 +23,11 @@
     transition: all .2s linear;
 }
 
+.business-exit {
+    opacity: 0;
+}
+
+
 .business__delite {
     margin-right: 20px;
     width: 32px;
