@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useState } from 'react';
+import React, { createRef, useEffect, useRef, useState } from 'react';
 import Business from './Business/Business';
 import './BusinessList.css'
 import closeIcone from '../../images/close_cross_icon_128690.svg'
@@ -7,13 +7,11 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 const BusinessList = (props) => {
     const { obj: cards, onDelite, sortTodo, onQwe } = props
     const [currentCard, setCurrentCard] = useState(null)
-    const [cssTransition, setCssTransition] = useState(false)
+    const [cssTransition, setCssTransition] = useState(true)
+    const nodeRef = useRef(null)
 
     function handleClickCard(e, card) {
         console.log(card)
-        // console.log(e.target.style)
-    //     // e.target.style.marginLeft = '1000px';
-
     }
 
     function handleDeliteBusiness(card) {
@@ -44,36 +42,42 @@ const BusinessList = (props) => {
     }
 
     return (
-        <TransitionGroup className='businessList'>
-            {cards.sort(sortTodo).map(card =>
-                <CSSTransition
-                    in={cssTransition}
-                    timeout={1000}
-                    classNames='business'
-                    key={card.id}
-                >
-                    <div
-                        className='business'
-                        draggable={true}
-                        onClick={(e) => handleClickCard(e, card)}
-                        onDragStart={(e) => dragStratHandler(e, card)}
-                        onDragLeave={(e) => dragEndHandler(e)}
-                        onDragEnd={(e) => dragEndHandler(e)}
-                        onDragOver={(e) => dragOverHandler(e)}
-                        onDrop={(e) => dropHandler(e, card)}
+        <TransitionGroup
+            className='businessList'
+        >
+            {cards.sort(sortTodo).map((card) => {
+                const ref = createRef()
+                return (
+                    <CSSTransition
+                        nodeRef={ref}
+                        in={cssTransition}
+                        timeout={{enter:10, exit:300}}
+                        classNames='business'
+                        key={card.id}
                     >
-                        {card.text}
-                        <img
-                            src={closeIcone}
-                            alt='closeIcone'
-                            className='business__delite'
-                            onClick={(e) => handleDeliteBusiness(card)}
-                        />
-                    </div>
-                </CSSTransition>
-
-            )
+                        <div
+                            ref={ref}
+                            className='business'
+                            draggable={true}
+                            onClick={(e) => handleClickCard(e, card)}
+                            onDragStart={(e) => dragStratHandler(e, card)}
+                            onDragLeave={(e) => dragEndHandler(e)}
+                            onDragEnd={(e) => dragEndHandler(e)}
+                            onDragOver={(e) => dragOverHandler(e)}
+                            onDrop={(e) => dropHandler(e, card)}
+                        >
+                            {card.text}
+                            <img
+                                src={closeIcone}
+                                alt='closeIcone'
+                                className='business__delite'
+                                onClick={(e) => handleDeliteBusiness(card)}
+                            />
+                        </div>
+                    </CSSTransition>
+                )
             }
+            )}
         </TransitionGroup >
     );
 };

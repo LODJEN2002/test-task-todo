@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import './App.css';
 import BusinessList from './components/BusinessList/BusinessList';
-// import { TransitionGroup } from 'react-transition-group';
-// import Business from './components/BusinessList/Business/Business';
-import { Transition } from 'react-transition-group';
 
 function App() {
   const [text, setText] = useState('');
@@ -28,7 +25,6 @@ function App() {
 
   function handleSubmit(e) {
     if (text !== '') {
-      console.log(todoObj)
       e.preventDefault()
       setTodoObj([{ id: todoObj.length + 1, text: text, order: todoObj.length + 1 }, ...todoObj]) // Есть бак с id and order.
       setText('')
@@ -105,75 +101,6 @@ function App() {
         onDelite={handleDeliteBusiness}
         onQwe={handleSort}
       />
-
-      {/* <Transition
-        in={test}
-        timeout={1200}
-      >
-        {state =>
-          <div className={'test_anima ' + state}>
-            <div className='test_anima__text'>
-              test_animas
-            </div>
-            <button
-              className='test_anima__button'
-              onClick={() => {
-                setTest(!test)
-                // handleDeliteEl()
-
-              }}>
-              del</button>
-          </div>
-        }
-
-      </Transition >
-      <Transition
-        in={test}
-        timeout={1200}
-      >
-        {state =>
-          <div className={'test_anima ' + state}>
-            <div className='test_anima__text'>
-              test_animas
-            </div>
-            <button
-              className='test_anima__button'
-              onClick={() => {
-                setTest(!test)
-                // handleDeliteEl()
-
-              }}>
-              del</button>
-          </div>
-        }
-
-      </Transition > */}
-
-
-      {/* 
-        <div className={test ? 'test_anima' : 'test_anima_go'}>
-          <div className='test_anima__text'>
-            test_anima
-          </div>
-          <button
-            className='test_anima__button'
-            onClick={() => {
-              setTest(!test)
-            }}>
-            del</button>
-        </div>
-        <div className={test ? 'test_anima' : 'test_anima_go'}>
-          <div className='test_anima__text'>
-            test_anima
-          </div>
-          <button
-            className='test_anima__button'
-            onClick={() => {
-              setTest(!test)
-            }}>
-            del</button>
-        </div> */}
-
     </main>
   );
 }
