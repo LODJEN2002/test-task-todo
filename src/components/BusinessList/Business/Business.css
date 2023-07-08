@@ -23,19 +23,43 @@
     transition: all .25s linear;
 }
 
-.business-exit {
-    opacity: 0;
-    width: 200px;
-    height: 36px;
+@keyframes business-enter {
+    0% {
+        opacity: 0;
+        transform: translateX(-200px);
+    }
+
+    75% {
+        opacity: .66;
+        transform: translateX(75px);
+
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes business-exit {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-500px);
+    }
 }
 
 .business-enter {
-    opacity: 0;
-    width: 200px;
-    transition: opacity .01s linear, width .01s linear;
-
+    animation: business-enter 500ms ease-out;
 }
 
+.business-exit {
+    animation: business-exit 500ms ease-out
+}
 
 .business__delite {
     margin-right: 20px;

@@ -51,7 +51,7 @@ const BusinessList = (props) => {
                     <CSSTransition
                         nodeRef={ref}
                         in={cssTransition}
-                        timeout={{enter:10, exit:300}}
+                        timeout={{enter:500, exit:500}}
                         classNames='business'
                         key={card.id}
                     >
