@@ -5,7 +5,7 @@ import closeIcone from '../../images/close_cross_icon_128690.svg'
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const BusinessList = (props) => {
-    const { obj: cards, onDelite, sortTodo, onQwe } = props
+    const { obj: cards, onDelite, sortTodo, onQwe, theme } = props
     const [currentCard, setCurrentCard] = useState(null)
     const [cssTransition, setCssTransition] = useState(true)
     const nodeRef = useRef(null)
@@ -24,21 +24,36 @@ const BusinessList = (props) => {
     }
 
     function dragEndHandler(e) {
-        e.target.style.background = '#CECE1B'
+        console.log('end handler')
         e.target.style.borderTop = '3px solid #030518';
+        if (theme) {
+            e.target.style.background = '#CECE1B'
+        } else {
+            e.target.style.background = 'white'
+
+        }
     }
 
     function dragOverHandler(e) {
         e.preventDefault()
         e.target.style.borderTop = '5px solid red';
-        e.target.style.background = 'green'
+        if (theme) {
+            // e.target.style.background = 'green'
+        } else {
+            // e.target.style.background = '#CECE1B'
+
+        }
     }
 
     function dropHandler(e, card) {
         e.preventDefault()
         onQwe(card, currentCard)
-        e.target.style.background = '#CECE1B'
         e.target.style.borderTop = '3px solid #030518';
+        if (theme) {
+            e.target.style.background = '#CECE1B'
+        } else {
+
+        }
     }
 
     return (
@@ -51,13 +66,13 @@ const BusinessList = (props) => {
                     <CSSTransition
                         nodeRef={ref}
                         in={cssTransition}
-                        timeout={{enter:500, exit:500}}
+                        timeout={{ enter: 500, exit: 250 }}
                         classNames='business'
                         key={card.id}
                     >
                         <div
                             ref={ref}
-                            className='business'
+                            className={theme ? 'business-black' : 'business-white'}
                             draggable={true}
                             onClick={(e) => handleClickCard(e, card)}
                             onDragStart={(e) => dragStratHandler(e, card)}

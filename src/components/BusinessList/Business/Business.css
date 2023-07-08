@@ -1,6 +1,7 @@
 @import '../../../fonts/inter.css';
 
-.business {
+.business-black,
+.business-white {
     display: flex;
     justify-content: space-between;
     margin-left: auto;
@@ -21,6 +22,11 @@
     line-height: 36px;
     cursor: grab;
     transition: all .25s linear;
+}
+
+.business-white {
+    background-color: white;
+
 }
 
 @keyframes business-enter {
@@ -45,11 +51,12 @@
     0% {
         opacity: 1;
         transform: translateX(0);
+        height: 36px;
     }
 
     100% {
         opacity: 0;
-        transform: translateX(-500px);
+        transform: translateX(-400px);
     }
 }
 
@@ -58,7 +65,7 @@
 }
 
 .business-exit {
-    animation: business-exit 500ms ease-out
+    animation: business-exit 250ms ease-out
 }
 
 .business__delite {

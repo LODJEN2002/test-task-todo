@@ -1,14 +1,36 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import BusinessList from './components/BusinessList/BusinessList';
 
 function App() {
   const [text, setText] = useState('');
-  const [todoObj, setTodoObj] = useState([
-    { id: 1, text: '1', order: 1 },
-    { id: 2, text: '2', order: 2 },
-    { id: 3, text: 'React Transition Group', order: 3 }
-  ]);
+  const [theme, setTheme] = useState(true);
+  const localData = localStorage.getItem('todoObj')
+  const [todoObj, setTodoObj] = useState(
+    JSON.parse(localData)
+    // [
+      // { id: 1, text: 'Краска задач', order: 1 },
+      // { id: 2, text: 'localStorage', order: 2 },
+      // { id: 3, text: 'React Transition Group', order: 3 },
+      // { id: 4, text: 'theme', order: 4 },
+    // ]
+  );
+
+  useEffect(() => {
+    localStorage.setItem('todoObj', JSON.stringify(todoObj))
+  }, [todoObj])
+
+  useEffect(() => {
+    if (theme) {
+      document.body.style.backgroundColor = '#110726'
+      document.body.style.transition = 'background-color 250ms linear'
+      // 'transition: all .25s linear'
+
+    } else {
+      document.body.style.backgroundColor = '#EEF099'
+    }
+  }, [theme])
+
 
   function sortTodo(a, b) {
     if (a.order > b.order) {
@@ -54,7 +76,13 @@ function App() {
 
   return (
     <main className="App">
+      <button className='ToDo__theme'
+        onClick={() => setTheme(!theme)}
+      >
+        Theme
+      </button>
       <div className='ToDo__title'>
+
         <div className='asd'>
           <div>
             <div>
@@ -77,9 +105,10 @@ function App() {
           List
         </div>
       </div>
-      <div className='Todo__container'>
+
+      <div className={theme ? 'Todo__container-black' : 'Todo__container-white'}>
         <input
-          className='ToDo__container-input'
+          className={theme ? 'ToDo__container-input-black' : 'ToDo__container-input-white'}
           value={text}
           placeholder='Введите текст'
           onChange={onChange}
@@ -100,6 +129,7 @@ function App() {
         obj={todoObj}
         onDelite={handleDeliteBusiness}
         onQwe={handleSort}
+        theme={theme}
       />
     </main>
   );

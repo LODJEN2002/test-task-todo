@@ -8,13 +8,13 @@
   to {
     rotate: 180deg;
   }
-
 }
 
 .App {
   text-align: center;
   margin-top: 25px;
   color: white;
+  /* background-color: #110726; */
 }
 
 .ToDo__title {
@@ -47,7 +47,8 @@
 
 }
 
-.Todo__container {
+.Todo__container-black,
+.Todo__container-white {
   background-color: #EEF099;
   width: 688px;
   height: 48px;
@@ -56,7 +57,12 @@
   margin-top: 45px;
 }
 
-.ToDo__container-input {
+.Todo__container-white {
+  background-color: white;
+}
+
+.ToDo__container-input-black,
+.ToDo__container-input-white {
   background-color: #EEF099;
   margin: 6px 0 6px 15px;
   font-weight: 600;
@@ -68,6 +74,10 @@
   border: none;
   outline: none;
   font-family: 'Inter', sans-serif;
+}
+
+.ToDo__container-input-white {
+  background-color: white;
 }
 
 .ToDo__container-button {
@@ -136,11 +146,14 @@
 .test_anima.entering {
   animation: test 1s linear;
 }
+
 .test_anima.entered {}
+
 .test_anima.exiting {
   animation: testback 1s linear;
-  
+
 }
+
 .test_anima.exited {}
 
 .test_anima_go {
