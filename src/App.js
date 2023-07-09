@@ -16,9 +16,6 @@ function App() {
     // ]
   );
 
-  const qwe = ''
-  console.log(qwe.trim())
-
   useEffect(() => {
     localStorage.setItem('todoObj', JSON.stringify(todoObj))
   }, [todoObj])
@@ -27,8 +24,6 @@ function App() {
     if (theme) {
       document.body.style.backgroundColor = '#110726'
       document.body.style.transition = 'background-color 250ms linear'
-      // 'transition: all .25s linear'
-
     } else {
       document.body.style.backgroundColor = '#EEF099'
     }

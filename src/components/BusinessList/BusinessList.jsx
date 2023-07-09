@@ -40,7 +40,7 @@ const BusinessList = (props) => {
         if (theme) {
             // e.target.style.background = 'green'
         } else {
-            // e.target.style.background = '#CECE1B'
+            // e.target.style.background = '#CECE1B' 
 
         }
     }
