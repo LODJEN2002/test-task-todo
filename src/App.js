@@ -9,12 +9,15 @@ function App() {
   const [todoObj, setTodoObj] = useState(
     JSON.parse(localData)
     // [
-      // { id: 1, text: 'Краска задач', order: 1 },
-      // { id: 2, text: 'localStorage', order: 2 },
-      // { id: 3, text: 'React Transition Group', order: 3 },
-      // { id: 4, text: 'theme', order: 4 },
+    // { id: 1, text: 'Краска задач', order: 1 },
+    // { id: 2, text: 'localStorage', order: 2 },
+    // { id: 3, text: 'React Transition Group', order: 3 },
+    // { id: 4, text: 'theme', order: 4 },
     // ]
   );
+
+  const qwe = ''
+  console.log(qwe.trim())
 
   useEffect(() => {
     localStorage.setItem('todoObj', JSON.stringify(todoObj))
@@ -46,7 +49,7 @@ function App() {
   }
 
   function handleSubmit(e) {
-    if (text !== '') {
+    if (text.trim() !== '') {
       e.preventDefault()
       setTodoObj([{ id: todoObj.length + 1, text: text, order: todoObj.length + 1 }, ...todoObj]) // Есть бак с id and order.
       setText('')
