@@ -1,20 +1,22 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import BusinessList from './components/BusinessList/BusinessList';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 function App() {
   const [text, setText] = useState('');
   const [theme, setTheme] = useState(true);
   const localData = localStorage.getItem('todoObj')
-  const [todoObj, setTodoObj] = useState(
-    JSON.parse(localData)
-    // [
-    // { id: 1, text: 'Краска задач', order: 1 },
-    // { id: 2, text: 'localStorage', order: 2 },
-    // { id: 3, text: 'React Transition Group', order: 3 },
-    // { id: 4, text: 'theme', order: 4 },
-    // ]
-  );
+  const [todoObj, setTodoObj] = useState(JSON.parse(localData));
+
+  const dispatch = useDispatch()
+  const asd = useSelector(state => state.num)
+
+  const qwe = () => {
+    dispatch({ type: "INCREMENT", payload: 1 })
+    console.log(asd)
+  }
 
   useEffect(() => {
     localStorage.setItem('todoObj', JSON.stringify(todoObj))
@@ -28,7 +30,6 @@ function App() {
       document.body.style.backgroundColor = '#EEF099'
     }
   }, [theme])
-
 
   function sortTodo(a, b) {
     if (a.order > b.order) {
@@ -80,7 +81,6 @@ function App() {
         Theme
       </button>
       <div className='ToDo__title'>
-
         <div className='asd'>
           <div>
             <div>

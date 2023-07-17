@@ -8,7 +8,6 @@ const BusinessList = (props) => {
     const { obj: cards, onDelite, sortTodo, onQwe, theme } = props
     const [currentCard, setCurrentCard] = useState(null)
     const [cssTransition, setCssTransition] = useState(true)
-    const nodeRef = useRef(null)
 
     function handleClickCard(e, card) {
         console.log(card)
@@ -24,7 +23,6 @@ const BusinessList = (props) => {
     }
 
     function dragEndHandler(e) {
-        console.log('end handler')
         e.target.style.borderTop = '3px solid #030518';
         if (theme) {
             e.target.style.background = '#CECE1B'
@@ -75,6 +73,7 @@ const BusinessList = (props) => {
                             className={theme ? 'business-black' : 'business-white'}
                             draggable={true}
                             onClick={(e) => handleClickCard(e, card)}
+                            // onDragCapture={console.log('s')}
                             onDragStart={(e) => dragStratHandler(e, card)}
                             onDragLeave={(e) => dragEndHandler(e)}
                             onDragEnd={(e) => dragEndHandler(e)}
